@@ -1,0 +1,643 @@
+/* ════════════════════════════════════════════════════
+   DUBLIN IRISH PUB — dublin.css
+   Estética: Dark Luxury · Oro · Vintage Irish · Cali
+   Fuentes: Cinzel Decorative (display) + IM Fell English (body) + Lato
+════════════════════════════════════════════════════ */
+
+/* ─── TOKENS ────────────────────────────────────── */
+:root {
+  --gold:        #c9a84c;
+  --gold-light:  #e8c96a;
+  --gold-dim:    #8a6a28;
+  --gold-glow:   rgba(201,168,76,0.18);
+  --bg:          #0a0a0a;
+  --bg2:         #111008;
+  --bg3:         #161410;
+  --surface:     #1a1710;
+  --surface2:    #221f14;
+  --border:      rgba(201,168,76,0.2);
+  --border-bright: rgba(201,168,76,0.5);
+  --text:        #e8d9b8;
+  --text-dim:    #9a8a6a;
+  --text-mute:   #5a5040;
+  --font-display:'Cinzel Decorative', serif;
+  --font-head:   'Cinzel', serif;
+  --font-body:   'IM Fell English', serif;
+  --font-ui:     'Lato', sans-serif;
+  --wa:          #25D366;
+}
+
+/* ─── RESET ──────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+* { -webkit-tap-highlight-color: transparent; }
+
+/* ─── GRAIN OVERLAY ──────────────────────────────── */
+.grain {
+  position: fixed; inset: 0; z-index: 1000;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px;
+  opacity: 0.6;
+}
+
+/* ─── HERO ───────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px 80px;
+  text-align: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.06) 0%, transparent 70%),
+    linear-gradient(180deg, #0a0a06 0%, #0e0c07 50%, #080806 100%);
+}
+
+/* Textura de fondo tipo tela arrugada */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(201,168,76,0.015) 2px,
+      rgba(201,168,76,0.015) 4px
+    );
+  pointer-events: none;
+}
+
+/* ── Velas ── */
+.hero-candles {
+  position: absolute; inset: 0;
+  pointer-events: none;
+}
+.candle {
+  position: absolute;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to top, #3a2a10, #c9a84c44);
+  border-radius: 2px;
+}
+.candle.c1 { left: 8%; height: 120px; }
+.candle.c2 { right: 8%; height: 100px; }
+.flame {
+  position: absolute;
+  top: -18px; left: 50%;
+  transform: translateX(-50%);
+  width: 10px; height: 18px;
+  background: radial-gradient(ellipse at 50% 80%, #fff3 0%, #ffcc0088 40%, #ff660044 70%, transparent 100%);
+  border-radius: 50% 50% 20% 20%;
+  animation: flicker 2s ease-in-out infinite alternate;
+  filter: blur(1px);
+}
+@keyframes flicker {
+  0%   { transform: translateX(-50%) scaleX(1) scaleY(1) rotate(-2deg); opacity: 0.9; }
+  33%  { transform: translateX(-50%) scaleX(0.8) scaleY(1.1) rotate(1deg); opacity: 1; }
+  66%  { transform: translateX(-50%) scaleX(1.1) scaleY(0.9) rotate(-1deg); opacity: 0.85; }
+  100% { transform: translateX(-50%) scaleX(0.9) scaleY(1.05) rotate(2deg); opacity: 0.95; }
+}
+
+/* ── Ornamentos ── */
+.hero-ornament { width: 100%; max-width: 320px; }
+.top-ornament  { margin-bottom: 28px; }
+.bottom-ornament { margin-top: 28px; }
+
+/* ── Contenido hero ── */
+.hero-inner { position: relative; z-index: 2; }
+.shamrock {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 8px;
+  animation: glow-pulse 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(201,168,76,0.6));
+}
+@keyframes glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(201,168,76,0.4)); }
+  50%       { filter: drop-shadow(0 0 16px rgba(201,168,76,0.8)); }
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 14vw, 96px);
+  font-weight: 900;
+  color: var(--gold);
+  letter-spacing: 6px;
+  line-height: 1;
+  text-shadow:
+    0 0 40px rgba(201,168,76,0.4),
+    0 2px 0 rgba(0,0,0,0.8);
+  margin-bottom: 8px;
+  animation: title-in 1.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes title-in {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.hero-subtitle-wrap {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin-bottom: 12px;
+}
+.hero-subtitle {
+  font-family: var(--font-head);
+  font-size: clamp(18px, 4vw, 26px);
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+.hero-diamond {
+  color: var(--gold); font-size: 10px;
+}
+
+.hero-since {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: var(--gold-dim);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.hero-address {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+
+/* ── Scroll hint ── */
+.scroll-hint {
+  position: absolute; bottom: 28px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  font-family: var(--font-ui); font-size: 10px; letter-spacing: 3px;
+  color: var(--gold-dim); text-transform: uppercase;
+}
+.scroll-arrow {
+  font-size: 18px; color: var(--gold-dim);
+  animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+/* ─── NAV TABS ───────────────────────────────────── */
+.menu-nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; overflow-x: auto; gap: 0;
+  background: #0d0b07;
+  border-bottom: 1px solid var(--border);
+  padding: 0 8px;
+  scrollbar-width: none;
+}
+.menu-nav::-webkit-scrollbar { display: none; }
+
+.tab {
+  flex-shrink: 0;
+  background: none; border: none;
+  font-family: var(--font-ui);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 16px 16px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+  min-height: 52px;
+}
+.tab:hover { color: var(--gold); }
+.tab.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* ─── MAIN ───────────────────────────────────────── */
+.menu-main { padding-bottom: 80px; }
+.menu-section { padding: 40px 20px; max-width: 680px; margin: 0 auto; }
+.menu-section.hidden { display: none; }
+
+/* ─── SECTION HEADER ─────────────────────────────── */
+.section-header {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 32px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 6vw, 32px);
+  font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+  text-shadow: 0 0 20px rgba(201,168,76,0.3);
+}
+.section-ornament {
+  flex: 1; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+}
+
+/* ─── DRINK CARDS ────────────────────────────────── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.drink-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .25s, transform .25s, box-shadow .25s;
+  cursor: default;
+}
+.drink-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.drink-card:hover {
+  border-color: var(--border-bright);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(201,168,76,0.08);
+}
+
+.drink-card.featured {
+  border-color: rgba(201,168,76,0.35);
+  background: linear-gradient(135deg, #1e1a0e, #161208);
+}
+.drink-card.featured::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.card-badge {
+  position: absolute; top: 0; right: 0;
+  background: var(--gold);
+  color: #0a0a06;
+  font-family: var(--font-ui);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 0 10px 0 8px;
+}
+
+.card-icon {
+  font-size: 28px; flex-shrink: 0; margin-top: 2px;
+  filter: drop-shadow(0 2px 6px rgba(201,168,76,0.3));
+}
+
+.card-body { flex: 1; }
+.card-name {
+  font-family: var(--font-head);
+  font-size: 16px; font-weight: 700;
+  color: var(--text);
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+}
+.card-desc {
+  font-family: var(--font-ui);
+  font-size: 12px; line-height: 1.6;
+  color: var(--text-dim);
+  font-style: normal;
+}
+
+.card-price {
+  font-family: var(--font-head);
+  font-size: 22px; font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+  align-self: center;
+  flex-shrink: 0;
+  text-shadow: 0 0 12px rgba(201,168,76,0.3);
+}
+.card-price span { font-size: 14px; }
+.card-price .mil {
+  font-family: var(--font-ui);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 1px;
+  display: block; text-align: right;
+  color: var(--gold-dim);
+}
+
+/* Sabores de soda */
+.card-flavors {
+  display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px;
+}
+.card-flavors span {
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.25);
+  color: var(--gold-dim);
+  font-family: var(--font-ui);
+  font-size: 10px; font-weight: 600;
+  padding: 2px 8px; border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* ─── BEER LIST ──────────────────────────────────── */
+.beer-grid {
+  display: flex; flex-direction: column; gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  margin-bottom: 24px;
+}
+.beer-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+  transition: background .2s;
+}
+.beer-row:last-child { border-bottom: none; }
+.beer-row:nth-child(odd) { background: var(--surface); }
+.beer-row:nth-child(even) { background: var(--bg3); }
+.beer-row:hover { background: var(--surface2); }
+
+.beer-name {
+  font-family: var(--font-head);
+  font-size: 15px; font-weight: 600; color: var(--text);
+}
+.beer-name em {
+  font-family: var(--font-ui); font-size: 11px;
+  color: var(--text-dim); font-style: normal;
+}
+.beer-price {
+  font-family: var(--font-head);
+  font-size: 16px; font-weight: 700; color: var(--gold);
+}
+
+.beer-callout {
+  background: linear-gradient(135deg, #1e1a0a, #141008);
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 12px; padding: 20px 22px;
+  display: flex; align-items: center; gap: 16px;
+}
+.callout-icon { font-size: 32px; }
+.callout-title {
+  font-family: var(--font-display);
+  font-size: 18px; color: var(--gold);
+  text-shadow: 0 0 12px rgba(201,168,76,0.4);
+}
+.callout-sub {
+  font-family: var(--font-ui);
+  font-size: 12px; color: var(--text-dim); margin-top: 3px;
+}
+
+/* ─── LICORES ────────────────────────────────────── */
+.licores-header-row {
+  display: grid; grid-template-columns: 1fr 90px 90px;
+  padding: 8px 20px 12px;
+}
+.licores-col-label {
+  font-family: var(--font-ui);
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold-dim);
+  text-align: center;
+}
+
+.licores-list {
+  border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  margin-bottom: 28px;
+}
+.licor-row {
+  display: grid; grid-template-columns: 1fr 90px 90px;
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(201,168,76,0.06);
+  align-items: center;
+  transition: background .2s;
+}
+.licor-row:last-child { border-bottom: none; }
+.licor-row:nth-child(odd) { background: var(--surface); }
+.licor-row:nth-child(even) { background: var(--bg3); }
+.licor-row:hover { background: var(--surface2); }
+
+.licor-name {
+  font-family: var(--font-head);
+  font-size: 14px; font-weight: 600; color: var(--text);
+}
+.licor-price {
+  font-family: var(--font-head);
+  font-size: 14px; font-weight: 700; color: var(--gold);
+  text-align: center;
+}
+.licor-row.no-caneca .licor-price:last-child { color: var(--text-mute); }
+
+/* Reserva callout */
+.reserva-callout {
+  background: linear-gradient(135deg, #1e1a0a, #141008);
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 14px; padding: 24px 22px;
+  text-align: center;
+}
+.reserva-title {
+  font-family: var(--font-head);
+  font-size: 16px; color: var(--text); margin-bottom: 4px;
+}
+.reserva-sub {
+  font-family: var(--font-ui);
+  font-size: 12px; color: var(--text-dim); margin-bottom: 16px;
+}
+.reserva-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--wa); color: #fff;
+  font-family: var(--font-ui); font-size: 14px; font-weight: 700;
+  padding: 12px 24px; border-radius: 10px;
+  transition: transform .2s, box-shadow .2s;
+  letter-spacing: 0.5px;
+}
+.reserva-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+}
+
+/* ─── COMIDA ─────────────────────────────────────── */
+.food-category-title {
+  font-family: var(--font-display);
+  font-size: 16px; color: var(--gold);
+  letter-spacing: 3px; text-transform: uppercase;
+  text-align: center; margin: 32px 0 18px;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+}
+.food-category-title span { color: var(--gold); font-size: 8px; }
+
+.food-cards { display: flex; flex-direction: column; gap: 14px; }
+
+.food-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex; gap: 16px; align-items: flex-start;
+  position: relative; overflow: hidden;
+  transition: border-color .25s, transform .25s;
+}
+.food-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(201,168,76,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+.food-card:hover {
+  border-color: var(--border-bright);
+  transform: translateY(-2px);
+}
+.food-card.featured-food {
+  border-color: rgba(201,168,76,0.4);
+  background: linear-gradient(135deg, #1e1a0e, #151208);
+}
+
+.food-badge {
+  position: absolute; top: 0; right: 0;
+  background: var(--gold); color: #0a0a06;
+  font-family: var(--font-ui);
+  font-size: 9px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; padding: 3px 12px;
+  border-radius: 0 12px 0 8px;
+}
+
+.food-emoji { font-size: 36px; flex-shrink: 0; margin-top: 2px; }
+
+.food-info { flex: 1; }
+.food-name {
+  font-family: var(--font-head);
+  font-size: 17px; font-weight: 700;
+  color: var(--text); margin-bottom: 6px;
+}
+.food-desc {
+  font-family: var(--font-ui);
+  font-size: 13px; line-height: 1.65;
+  color: var(--text-dim); margin-bottom: 12px;
+}
+.food-price {
+  font-family: var(--font-head);
+  font-size: 20px; font-weight: 700;
+  color: var(--gold);
+  text-shadow: 0 0 10px rgba(201,168,76,0.3);
+}
+
+/* ─── FOOTER ─────────────────────────────────────── */
+.site-footer {
+  background: #06060400;
+  border-top: 1px solid var(--border);
+  padding: 48px 24px max(40px, calc(env(safe-area-inset-bottom) + 40px));
+  text-align: center;
+}
+.footer-shamrock {
+  font-size: 28px; margin-bottom: 10px;
+  filter: drop-shadow(0 0 8px rgba(201,168,76,0.5));
+}
+.footer-title {
+  font-family: var(--font-display);
+  font-size: 20px; color: var(--gold); letter-spacing: 4px;
+  text-shadow: 0 0 20px rgba(201,168,76,0.3);
+}
+.footer-since {
+  font-family: var(--font-ui);
+  font-size: 10px; letter-spacing: 4px;
+  color: var(--gold-dim); margin: 6px 0 16px;
+  text-transform: uppercase;
+}
+.footer-divider {
+  width: 60px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+  margin: 0 auto 16px;
+}
+.footer-info {
+  font-family: var(--font-ui); font-size: 12px;
+  color: var(--text-dim); margin-bottom: 20px; letter-spacing: 0.5px;
+}
+.footer-socials {
+  display: flex; gap: 10px; justify-content: center;
+  flex-wrap: wrap; margin-bottom: 20px;
+}
+.footer-social-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text-dim); padding: 9px 16px; border-radius: 8px;
+  font-family: var(--font-ui); font-size: 12px; font-weight: 600;
+  transition: all .2s; letter-spacing: 0.5px;
+}
+.footer-social-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+.footer-social-btn.wa { background: #0d2a18; border-color: #1e4a2a; color: #4ade80; }
+.footer-social-btn.wa:hover { border-color: var(--wa); box-shadow: 0 0 12px rgba(37,211,102,0.2); }
+.footer-copy {
+  font-family: var(--font-ui); font-size: 11px; color: var(--text-mute);
+}
+
+/* ─── FAB ────────────────────────────────────────── */
+.reserva-fab {
+  position: fixed;
+  bottom: max(24px, calc(env(safe-area-inset-bottom) + 16px));
+  right: max(20px, env(safe-area-inset-right));
+  z-index: 200;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--wa); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+  transition: transform .2s, box-shadow .2s;
+}
+.reserva-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+
+/* ─── ANIMACIÓN DE ENTRADA SECCIONES ─────────────── */
+.menu-section:not(.hidden) {
+  animation: section-in .4s cubic-bezier(0.25,0.8,0.25,1) both;
+}
+@keyframes section-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 480px) {
+  .hero-title { letter-spacing: 3px; }
+  .tab { padding: 14px 12px; font-size: 11px; }
+  .menu-section { padding: 32px 14px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .drink-card { flex-direction: row; }
+  .licores-header-row,
+  .licor-row { grid-template-columns: 1fr 75px 75px; }
+  .licores-col-label,
+  .licor-price { font-size: 12px; }
+  .licor-name { font-size: 12px; }
+  .beer-row { padding: 13px 14px; }
+  .food-card { flex-direction: column; gap: 10px; }
+  .food-emoji { font-size: 28px; }
+  .hero-candles { display: none; }
+}
+
+@media (max-width: 360px) {
+  .licores-header-row,
+  .licor-row { grid-template-columns: 1fr 65px 65px; padding: 12px 12px; }
+  .tab { padding: 14px 10px; font-size: 10px; }
+}
+
+@media (min-width: 640px) {
+  .menu-section { padding: 48px 28px; }
+}
