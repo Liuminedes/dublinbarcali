@@ -2,6 +2,8 @@
    DUBLIN IRISH PUB — dublin.js
 ════════════════════════════════════════════════════ */
 
+const WA_NUMBER = "573015307754";
+
 // ─── TAB NAVIGATION ───────────────────────────────
 const tabs     = document.querySelectorAll('.tab');
 const sections = document.querySelectorAll('.menu-section');
@@ -11,49 +13,32 @@ tabs.forEach(tab => {
   tab.addEventListener('click', () => {
     const target = tab.dataset.section;
 
-    // Update tabs
     tabs.forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
 
-    // Update sections
     sections.forEach(s => {
-      if (s.id === target) {
-        s.classList.remove('hidden');
-      } else {
-        s.classList.add('hidden');
-      }
+      s.classList.toggle('hidden', s.id !== target);
     });
 
-    // Scroll to just below the nav
     const navBottom = nav.getBoundingClientRect().bottom + window.scrollY;
     window.scrollTo({ top: navBottom - 1, behavior: 'smooth' });
 
-    // Center active tab in nav
     centerTab(tab);
+    setTimeout(observeCards, 60);
   });
 });
 
 function centerTab(tab) {
-  const navRect = nav.getBoundingClientRect();
   const tabRect = tab.getBoundingClientRect();
-  const scrollLeft = nav.scrollLeft + (tabRect.left - navRect.left) - (navRect.width / 2) + (tabRect.width / 2);
-  nav.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+  const navRect = nav.getBoundingClientRect();
+  nav.scrollTo({
+    left: nav.scrollLeft + (tabRect.left - navRect.left) - (navRect.width / 2) + (tabRect.width / 2),
+    behavior: 'smooth'
+  });
 }
 
-// ─── STICKY NAV — highlight on scroll ─────────────
-const navObserver = new IntersectionObserver(
-  ([entry]) => {
-    nav.style.boxShadow = entry.isIntersecting
-      ? 'none'
-      : '0 4px 20px rgba(0,0,0,0.6)';
-  },
-  { rootMargin: '-62px 0px 0px 0px' }
-);
-const hero = document.querySelector('.hero');
-if (hero) navObserver.observe(hero);
-
-// ─── CARD ENTRANCE ANIMATION ON SCROLL ────────────
-const cardObserver = new IntersectionObserver((entries) => {
+// ─── CARD ENTRANCE ANIMATION ──────────────────────
+const cardObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.style.opacity = '1';
@@ -61,48 +46,195 @@ const cardObserver = new IntersectionObserver((entries) => {
       cardObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
 function observeCards() {
   document.querySelectorAll('.drink-card, .food-card, .beer-row, .licor-row').forEach((el, i) => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = `opacity .4s ease ${i * 0.04}s, transform .4s ease ${i * 0.04}s`;
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = `opacity .38s ease ${i * 0.035}s, transform .38s ease ${i * 0.035}s`;
     cardObserver.observe(el);
   });
 }
 observeCards();
 
-// Re-observe when tab changes
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    setTimeout(observeCards, 50);
-  });
-});
-
-// ─── TOUCH: swipe between tabs ────────────────────
-let touchStartX = 0;
-let touchStartY = 0;
-
+// ─── SWIPE BETWEEN TABS ───────────────────────────
+let touchStartX = 0, touchStartY = 0;
 document.addEventListener('touchstart', e => {
   touchStartX = e.touches[0].clientX;
   touchStartY = e.touches[0].clientY;
 }, { passive: true });
-
 document.addEventListener('touchend', e => {
   const dx = e.changedTouches[0].clientX - touchStartX;
   const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
-
-  // Only horizontal swipes far enough, not vertical scrolls
-  if (Math.abs(dx) > 60 && dy < 40) {
-    const activeTab = document.querySelector('.tab.active');
-    const tabArr    = Array.from(tabs);
-    const idx       = tabArr.indexOf(activeTab);
-
-    if (dx < 0 && idx < tabArr.length - 1) {
-      tabArr[idx + 1].click(); // swipe left → next
-    } else if (dx > 0 && idx > 0) {
-      tabArr[idx - 1].click(); // swipe right → prev
-    }
+  if (Math.abs(dx) > 55 && dy < 45) {
+    const arr = Array.from(tabs);
+    const idx = arr.indexOf(document.querySelector('.tab.active'));
+    if (dx < 0 && idx < arr.length - 1) arr[idx + 1].click();
+    else if (dx > 0 && idx > 0)         arr[idx - 1].click();
   }
 }, { passive: true });
+
+// ─── STICKY NAV SHADOW ────────────────────────────
+new IntersectionObserver(([e]) => {
+  nav.style.boxShadow = e.isIntersecting ? 'none' : '0 4px 20px rgba(0,0,0,0.7)';
+}).observe(document.querySelector('.hero'));
+
+// ════════════════════════════════════════════════════
+// PRODUCT MODAL
+// ════════════════════════════════════════════════════
+let pendingWaMsg = '';
+
+function openProduct(card) {
+  // ── Leer datos del card ──────────────────────────
+  const icon    = card.querySelector('.card-icon, .food-emoji')?.textContent?.trim() || '🍽️';
+  const name    = card.querySelector('.card-name, .food-name')?.textContent?.trim() || '';
+  const desc    = card.querySelector('.card-desc, .food-desc')?.textContent?.trim() || '';
+  const badge   = card.querySelector('.card-badge, .food-badge')?.textContent?.trim() || '';
+
+  // Precio — intentar card-price primero, luego food-price
+  let price = '';
+  const priceEl = card.querySelector('.card-price');
+  if (priceEl) {
+    const num = priceEl.querySelector('.card-price-num')?.textContent?.trim() || '';
+    price = `$${num}`;
+  } else {
+    price = card.querySelector('.food-price')?.textContent?.trim() || '';
+  }
+
+  // Sabores (sodas)
+  const flavorsEls = card.querySelectorAll('.card-flavors span');
+  const flavors = Array.from(flavorsEls).map(s => s.textContent.trim());
+
+  // ── Poblar modal ─────────────────────────────────
+  document.getElementById('pmIcon').textContent   = icon;
+  document.getElementById('pmName').textContent   = name;
+  document.getElementById('pmDesc').textContent   = desc;
+  document.getElementById('pmBadge').textContent  = badge;
+  document.getElementById('pmPrice').textContent  = price;
+
+  const flavorsDiv = document.getElementById('pmFlavors');
+  flavorsDiv.innerHTML = flavors.map(f => `<span>${f}</span>`).join('');
+
+  // ── Mensaje WA para este producto ────────────────
+  pendingWaMsg = buildProductMsg(name, price, desc);
+
+  // Botón "Pedir / Reservar" → abre WA con nombre
+  document.getElementById('pmWaBtn').onclick = () => {
+    closeProductDirect();
+    openWaModal(`Pedido: ${name} ${price}`);
+  };
+
+  // ── Abrir ────────────────────────────────────────
+  document.getElementById('productOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function buildProductMsg(name, price, desc) {
+  const lines = [
+    `¡Hola! 🍀 Estoy en *Dublin Irish Pub* y me interesa:`,
+    ``,
+    `🍹 *${name}*`,
+    `💰 Precio: *${price}*`,
+    ``,
+    `📋 _${desc}_`,
+    ``,
+    `¿Está disponible? ¡Los espero esta noche! ☘️`,
+  ];
+  return lines.join('\n');
+}
+
+function closeProduct(e) {
+  if (e.target === document.getElementById('productOverlay')) closeProductDirect();
+}
+function closeProductDirect() {
+  document.getElementById('productOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ════════════════════════════════════════════════════
+// WA NAME MODAL
+// ════════════════════════════════════════════════════
+function openWaModal(contextTitle) {
+  document.getElementById('waMsgTitle').textContent = contextTitle || 'Hacer reserva';
+  document.getElementById('waNameInput').value = '';
+  document.getElementById('waOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('waNameInput').focus(), 120);
+}
+
+function confirmWaName(skip) {
+  const rawName = document.getElementById('waNameInput').value.trim();
+  const name    = (!skip && rawName) ? rawName : null;
+
+  let msg = pendingWaMsg;
+  if (name) {
+    msg = msg
+      .replace('¡Hola! 🍀', `¡Hola! 🍀 Soy *${name}*`)
+      .replace('¡Hola! Quiero hacer una reserva', `¡Hola! Soy *${name}* y quiero hacer una reserva`);
+    // Si no matcheó ningún patrón, prepend
+    if (!msg.includes(name)) msg = `Mi nombre es *${name}*.\n\n` + msg;
+  }
+
+  closeWaModalDirect();
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  pendingWaMsg = '';
+}
+
+function closeWaModal(e) {
+  if (e.target === document.getElementById('waOverlay')) closeWaModalDirect();
+}
+function closeWaModalDirect() {
+  document.getElementById('waOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ─── RESERVA DESDE FAB / BOTONES EXTERNOS ─────────
+// El FAB de WhatsApp ahora también pasa por el modal de nombre
+document.querySelector('.reserva-fab').addEventListener('click', e => {
+  e.preventDefault();
+  pendingWaMsg = buildReservaMsg();
+  openWaModal('Hacer una reserva ☘️');
+});
+
+// Botón reserva en licores
+const reservaBtn = document.querySelector('.reserva-btn');
+if (reservaBtn) {
+  reservaBtn.addEventListener('click', e => {
+    e.preventDefault();
+    pendingWaMsg = buildReservaMsg();
+    openWaModal('Hacer una reserva ☘️');
+  });
+}
+
+// Botones de footer
+document.querySelectorAll('.footer-social-btn.wa').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    pendingWaMsg = buildReservaMsg();
+    openWaModal('Hacer una reserva ☘️');
+  });
+});
+
+function buildReservaMsg() {
+  return [
+    `¡Hola! Quiero hacer una reserva en *Dublin Irish Pub* 🍀`,
+    ``,
+    `📍 Calle 5 # 23-58 · Esquina B/Miraflores · Cali`,
+    ``,
+    `Por favor confirmarme:`,
+    `• Disponibilidad de mesa`,
+    `• Fecha y hora que necesito`,
+    `• Número de personas`,
+    ``,
+    `¡Los espero esta noche! ☘️🥃`,
+  ].join('\n');
+}
+
+// ─── ESC KEY ──────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeProductDirect();
+    closeWaModalDirect();
+  }
+});
