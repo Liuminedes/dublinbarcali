@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════
-   DUBLIN IRISH PUB — dublin.js
+   DUBLIN IRISH PUB — dublin.js  v2.0
 ════════════════════════════════════════════════════ */
 
 const WA_NUMBER = "573015307754";
@@ -29,13 +29,23 @@ tabs.forEach(tab => {
 });
 
 function centerTab(tab) {
+  const inner = nav.querySelector('.nav-inner');
   const tabRect = tab.getBoundingClientRect();
-  const navRect = nav.getBoundingClientRect();
-  nav.scrollTo({
-    left: nav.scrollLeft + (tabRect.left - navRect.left) - (navRect.width / 2) + (tabRect.width / 2),
+  const navRect = inner.getBoundingClientRect();
+  inner.scrollTo({
+    left: inner.scrollLeft + (tabRect.left - navRect.left) - (navRect.width / 2) + (tabRect.width / 2),
     behavior: 'smooth'
   });
 }
+
+// ─── SCROLL CTA ──────────────────────────────────
+document.getElementById('scrollCta')?.addEventListener('click', () => {
+  const navEl = document.getElementById('menuNav');
+  if (navEl) {
+    const y = navEl.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+});
 
 // ─── CARD ENTRANCE ANIMATION ──────────────────────
 const cardObserver = new IntersectionObserver(entries => {
@@ -52,7 +62,7 @@ function observeCards() {
   document.querySelectorAll('.drink-card, .food-card, .beer-row, .licor-row').forEach((el, i) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(18px)';
-    el.style.transition = `opacity .38s ease ${i * 0.035}s, transform .38s ease ${i * 0.035}s`;
+    el.style.transition = `opacity .4s ease ${i * 0.03}s, transform .4s ease ${i * 0.03}s`;
     cardObserver.observe(el);
   });
 }
@@ -76,9 +86,12 @@ document.addEventListener('touchend', e => {
 }, { passive: true });
 
 // ─── STICKY NAV SHADOW ────────────────────────────
-new IntersectionObserver(([e]) => {
-  nav.style.boxShadow = e.isIntersecting ? 'none' : '0 4px 20px rgba(0,0,0,0.7)';
-}).observe(document.querySelector('.hero'));
+const heroEl = document.querySelector('.hero');
+if (heroEl) {
+  new IntersectionObserver(([e]) => {
+    nav.style.boxShadow = e.isIntersecting ? 'none' : '0 4px 24px rgba(0,0,0,0.6)';
+  }).observe(heroEl);
+}
 
 // ════════════════════════════════════════════════════
 // PRODUCT MODAL
@@ -86,52 +99,52 @@ new IntersectionObserver(([e]) => {
 let pendingWaMsg = '';
 
 function openProduct(card) {
-  // ── Leer datos del card ──────────────────────────
-  const icon    = card.querySelector('.card-icon, .food-emoji')?.textContent?.trim() || '🍽️';
-  const name    = card.querySelector('.card-name, .food-name')?.textContent?.trim() || '';
-  const desc    = card.querySelector('.card-desc, .food-desc')?.textContent?.trim() || '';
-  const badge   = card.querySelector('.card-badge, .food-badge')?.textContent?.trim() || '';
+  // Prevent double-firing from nested onclick
+  if (card.closest('.food-grid, .cards-grid') === card) return;
 
-  // Precio — intentar card-price primero, luego food-price
+  const icon  = card.querySelector('.card-icon, .food-emoji')?.textContent?.trim() || '🍽️';
+  const name  = card.querySelector('.card-name, .food-name')?.textContent?.trim() || '';
+  const desc  = card.querySelector('.card-desc, .food-desc')?.textContent?.trim() || '';
+  const badge = card.querySelector('.card-ribbon, .food-badge')?.textContent?.trim() || '';
+
+  // Price
   let price = '';
-  const priceEl = card.querySelector('.card-price');
-  if (priceEl) {
-    const num = priceEl.querySelector('.card-price-num')?.textContent?.trim() || '';
-    price = `$${num}`;
+  const priceTag = card.querySelector('.card-price-tag');
+  if (priceTag) {
+    const amt = priceTag.querySelector('.amount')?.textContent?.trim() || '';
+    price = `$${amt}`;
   } else {
     price = card.querySelector('.food-price')?.textContent?.trim() || '';
   }
 
-  // Sabores (sodas)
+  // Flavors
   const flavorsEls = card.querySelectorAll('.card-flavors span');
   const flavors = Array.from(flavorsEls).map(s => s.textContent.trim());
 
-  // ── Poblar modal ─────────────────────────────────
-  document.getElementById('pmIcon').textContent   = icon;
-  document.getElementById('pmName').textContent   = name;
-  document.getElementById('pmDesc').textContent   = desc;
-  document.getElementById('pmBadge').textContent  = badge;
-  document.getElementById('pmPrice').textContent  = price;
+  // Populate modal
+  document.getElementById('pmIcon').textContent  = icon;
+  document.getElementById('pmName').textContent  = name;
+  document.getElementById('pmDesc').textContent  = desc;
+  document.getElementById('pmBadge').textContent = badge;
+  document.getElementById('pmPrice').textContent = price;
 
   const flavorsDiv = document.getElementById('pmFlavors');
   flavorsDiv.innerHTML = flavors.map(f => `<span>${f}</span>`).join('');
 
-  // ── Mensaje WA para este producto ────────────────
+  // WA message
   pendingWaMsg = buildProductMsg(name, price, desc);
 
-  // Botón "Pedir / Reservar" → abre WA con nombre
   document.getElementById('pmWaBtn').onclick = () => {
     closeProductDirect();
     openWaModal(`Pedido: ${name} ${price}`);
   };
 
-  // ── Abrir ────────────────────────────────────────
   document.getElementById('productOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
 function buildProductMsg(name, price, desc) {
-  const lines = [
+  return [
     `¡Hola! 🍀 Estoy en *Dublin Irish Pub* y me interesa:`,
     ``,
     `🍹 *${name}*`,
@@ -140,8 +153,7 @@ function buildProductMsg(name, price, desc) {
     `📋 _${desc}_`,
     ``,
     `¿Está disponible? ¡Los espero esta noche! ☘️`,
-  ];
-  return lines.join('\n');
+  ].join('\n');
 }
 
 function closeProduct(e) {
@@ -172,7 +184,6 @@ function confirmWaName(skip) {
     msg = msg
       .replace('¡Hola! 🍀', `¡Hola! 🍀 Soy *${name}*`)
       .replace('¡Hola! Quiero hacer una reserva', `¡Hola! Soy *${name}* y quiero hacer una reserva`);
-    // Si no matcheó ningún patrón, prepend
     if (!msg.includes(name)) msg = `Mi nombre es *${name}*.\n\n` + msg;
   }
 
@@ -189,26 +200,20 @@ function closeWaModalDirect() {
   document.body.style.overflow = '';
 }
 
-// ─── RESERVA DESDE FAB / BOTONES EXTERNOS ─────────
-// El FAB de WhatsApp ahora también pasa por el modal de nombre
-document.querySelector('.reserva-fab').addEventListener('click', e => {
+// ─── FAB + RESERVA BUTTONS ─────────────────────────
+document.getElementById('fabWa')?.addEventListener('click', e => {
   e.preventDefault();
   pendingWaMsg = buildReservaMsg();
   openWaModal('Hacer una reserva ☘️');
 });
 
-// Botón reserva en licores
-const reservaBtn = document.querySelector('.reserva-btn');
-if (reservaBtn) {
-  reservaBtn.addEventListener('click', e => {
-    e.preventDefault();
-    pendingWaMsg = buildReservaMsg();
-    openWaModal('Hacer una reserva ☘️');
-  });
-}
+document.querySelector('.reserva-btn')?.addEventListener('click', e => {
+  e.preventDefault();
+  pendingWaMsg = buildReservaMsg();
+  openWaModal('Hacer una reserva ☘️');
+});
 
-// Botones de footer
-document.querySelectorAll('.footer-social-btn.wa').forEach(btn => {
+document.querySelectorAll('.footer-link.wa-link').forEach(btn => {
   btn.addEventListener('click', e => {
     e.preventDefault();
     pendingWaMsg = buildReservaMsg();
