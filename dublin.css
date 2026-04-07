@@ -426,6 +426,16 @@ img { display:block; max-width:100%; }
   white-space:nowrap;
 }
 
+/* Promo Grid */
+.promo-grid {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+}
+@media (min-width: 480px) {
+  .promo-grid { grid-template-columns:1fr 1fr; }
+}
+
 /* Promo Banner */
 .promo-banner {
   background:linear-gradient(135deg, #1e1a0a, var(--surface));

@@ -101,6 +101,30 @@
           <span class="currency">$</span><span class="amount">16.000</span>
         </div>
       </article>
+
+      <article class="drink-card featured" onclick="openProduct(this)">
+        <div class="card-ribbon">De la Casa</div>
+        <div class="card-icon">🌿</div>
+        <div class="card-content">
+          <h3 class="card-name">Jägerhouse</h3>
+          <p class="card-desc">Jägermeister · Lulo · Romero · Zumo de limón</p>
+        </div>
+        <div class="card-price-tag">
+          <span class="currency">$</span><span class="amount">28.000</span>
+        </div>
+      </article>
+
+      <article class="drink-card featured" onclick="openProduct(this)">
+        <div class="card-ribbon">De la Casa</div>
+        <div class="card-icon">🍊</div>
+        <div class="card-content">
+          <h3 class="card-name">Covid-19</h3>
+          <p class="card-desc">Jägermeister · Vodka · Maracuyá · Romero · Zumo de limón</p>
+        </div>
+        <div class="card-price-tag">
+          <span class="currency">$</span><span class="amount">28.000</span>
+        </div>
+      </article>
     </div>
 
     <!-- Cócteles regulares -->
@@ -117,28 +141,6 @@
         </div>
         <div class="card-price-tag">
           <span class="currency">$</span><span class="amount">30.000</span>
-        </div>
-      </article>
-
-      <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🌿</div>
-        <div class="card-content">
-          <h3 class="card-name">Jägerhouse</h3>
-          <p class="card-desc">Jägermeister · Lulo · Romero · Zumo de limón</p>
-        </div>
-        <div class="card-price-tag">
-          <span class="currency">$</span><span class="amount">28.000</span>
-        </div>
-      </article>
-
-      <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🍊</div>
-        <div class="card-content">
-          <h3 class="card-name">Covid-19</h3>
-          <p class="card-desc">Jägermeister · Vodka · Maracuyá · Romero · Zumo de limón</p>
-        </div>
-        <div class="card-price-tag">
-          <span class="currency">$</span><span class="amount">28.000</span>
         </div>
       </article>
 
@@ -179,7 +181,7 @@
         <div class="card-icon">🫧</div>
         <div class="card-content">
           <h3 class="card-name">Gin Tonic</h3>
-          <p class="card-desc">Ginebra · Tónica · Limón</p>
+          <p class="card-desc">Ginebra Gordons · Tónica · Limón o naranja fresca (a elección)</p>
         </div>
         <div class="card-price-tag">
           <span class="currency">$</span><span class="amount">28.000</span>
@@ -281,7 +283,7 @@
           <h3 class="card-name">Sodas Italianas</h3>
           <p class="card-desc">Soda · Sirope artesanal de tu elección · Zumo de limón</p>
           <div class="card-flavors">
-            <span>Maracuyá</span><span>Lulo</span><span>Lychee & Berry</span><span>Borojo & Especias</span>
+            <span>Maracuyá</span><span>Lulo</span><span>Frutos Rojos</span><span>Borojó</span><span>Jengibre</span>
           </div>
         </div>
         <div class="card-price-tag">
@@ -338,17 +340,29 @@
       <div class="beer-row"><span class="beer-name">Budweiser <em>(lata 250ml)</em></span><span class="beer-dots"></span><span class="beer-price">$7.000</span></div>
       <div class="beer-row"><span class="beer-name">Club Colombia Dorada</span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
       <div class="beer-row"><span class="beer-name">Club Colombia Roja</span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
+      <div class="beer-row"><span class="beer-name">Club Colombia Negra</span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
+      <div class="beer-row"><span class="beer-name">Club Colombia Trigo</span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
+      <div class="beer-row"><span class="beer-name">Águila Original</span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
       <div class="beer-row"><span class="beer-name">Águila Light</span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
       <div class="beer-row"><span class="beer-name">Poker</span><span class="beer-dots"></span><span class="beer-price">$7.000</span></div>
+      <div class="beer-row"><span class="beer-name">Cerveza Draft <em>(barril 500ml)</em></span><span class="beer-dots"></span><span class="beer-price">$12.000</span></div>
       <div class="beer-row"><span class="beer-name">Smirnoff Ice</span><span class="beer-dots"></span><span class="beer-price">$12.000</span></div>
-      <div class="beer-row"><span class="beer-name">Draff <em>(lata 550ml)</em></span><span class="beer-dots"></span><span class="beer-price">$18.000</span></div>
     </div>
 
-    <div class="promo-banner">
-      <div class="promo-icon">🍻</div>
-      <div class="promo-text">
-        <strong>¿Litrico o miedo?</strong>
-        <span>¡Pregunta por el litro de cerveza nacional!</span>
+    <div class="promo-grid">
+      <div class="promo-banner">
+        <div class="promo-icon">🍻</div>
+        <div class="promo-text">
+          <strong>¿Litrico o miedo?</strong>
+          <span>Pregunta por el litro de cerveza nacional</span>
+        </div>
+      </div>
+      <div class="promo-banner">
+        <div class="promo-icon">🪣</div>
+        <div class="promo-text">
+          <strong>Balde: paga 5, lleva 6</strong>
+          <span>En todas las cervezas no artesanales</span>
+        </div>
       </div>
     </div>
   </section>
@@ -408,7 +422,7 @@
         <div class="food-info">
           <h3 class="food-name">Cheese Burger</h3>
           <p class="food-desc">Pan artesanal · Carne de res · Queso cheddar · Lechuga · Tomate · Cebolla · Salsa de la casa · Papas a la francesa</p>
-          <div class="food-price">$34.000</div>
+          <div class="food-price">$21.000</div>
         </div>
       </article>
 
