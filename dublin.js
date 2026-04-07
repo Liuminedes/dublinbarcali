@@ -48,21 +48,23 @@ document.getElementById('scrollCta')?.addEventListener('click', () => {
 });
 
 // ─── CARD ENTRANCE ANIMATION ──────────────────────
+// Rápido: sin delays largos, transición corta, aparición inmediata
 const cardObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
+      entry.target.classList.add('card-visible');
       cardObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+}, { threshold: 0.05, rootMargin: '0px 0px 40px 0px' });
 
 function observeCards() {
-  document.querySelectorAll('.drink-card, .food-card, .beer-row, .licor-row').forEach((el, i) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(18px)';
-    el.style.transition = `opacity .4s ease ${i * 0.03}s, transform .4s ease ${i * 0.03}s`;
+  const cards = document.querySelectorAll('.drink-card, .food-card, .beer-row, .licor-row');
+  cards.forEach((el, i) => {
+    el.classList.remove('card-visible');
+    // Máximo 8 items con stagger, después todos aparecen juntos
+    const delay = Math.min(i, 8) * 0.02;
+    el.style.transitionDelay = `${delay}s`;
     cardObserver.observe(el);
   });
 }
