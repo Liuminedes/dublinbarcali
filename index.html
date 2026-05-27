@@ -6,7 +6,8 @@
   <title>Dublin Irish Pub · Carta Digital</title>
   <link rel="icon" type="image/svg+xml" href="favicon_dublin.svg"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" rel="stylesheet" />
   <link rel="stylesheet" href="dublin.css"/>
 </head>
 <body>
@@ -18,12 +19,8 @@
 <header class="hero" id="hero">
   <div class="hero-glow"></div>
   <div class="hero-inner">
-    <div class="hero-celtic-knot">
-      <svg viewBox="0 0 80 80" width="48" height="48">
-        <circle cx="40" cy="40" r="36" stroke="var(--gold)" stroke-width="1" fill="none" opacity="0.4"/>
-        <circle cx="40" cy="40" r="28" stroke="var(--gold)" stroke-width="0.5" fill="none" opacity="0.25"/>
-        <text x="40" y="48" text-anchor="middle" font-size="32" fill="var(--gold)">☘</text>
-      </svg>
+    <div class="hero-celtic-knot" style="margin-bottom: 30px;">
+      <img src="shamrock_logo.png" alt="Clover" width="140" height="140" style="border-radius: 50%; border: 2px solid var(--gold); box-shadow: 0 0 40px var(--gold-glow); display: block; margin: 0 auto;">
     </div>
     <h1 class="hero-title">DUBLIN</h1>
     <div class="hero-subtitle-wrap">
@@ -44,19 +41,19 @@
 <nav class="menu-nav" id="menuNav">
   <div class="nav-inner">
     <button class="tab active" data-section="cocteles">
-      <span class="tab-icon">🍹</span><span class="tab-label">Cócteles</span>
+      <span class="material-symbols-outlined">local_bar</span><span class="tab-label">Cócteles</span>
     </button>
     <button class="tab" data-section="sin-alcohol">
-      <span class="tab-icon">🍋</span><span class="tab-label">Sin Alcohol</span>
+      <span class="material-symbols-outlined">water_drop</span><span class="tab-label">Sin Alcohol</span>
     </button>
     <button class="tab" data-section="cervezas">
-      <span class="tab-icon">🍺</span><span class="tab-label">Cervezas</span>
+      <span class="material-symbols-outlined">sports_bar</span><span class="tab-label">Cervezas</span>
     </button>
     <button class="tab" data-section="licores">
-      <span class="tab-icon">🥃</span><span class="tab-label">Licores</span>
+      <span class="material-symbols-outlined">liquor</span><span class="tab-label">Licores</span>
     </button>
     <button class="tab" data-section="comida">
-      <span class="tab-icon">🍔</span><span class="tab-label">Comida</span>
+      <span class="material-symbols-outlined">lunch_dining</span><span class="tab-label">Comida</span>
     </button>
   </div>
 </nav>
@@ -80,7 +77,7 @@
     <div class="cards-grid">
       <article class="drink-card featured" onclick="openProduct(this)">
         <div class="card-ribbon">Dublin Special</div>
-        <div class="card-icon">🍺</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_bar</span></div>
         <div class="card-content">
           <h3 class="card-name">Dublin Buí Beer</h3>
           <p class="card-desc">Cerveza rubia · Sirope artesanal de maracuyá/romero · Zumo de limón</p>
@@ -92,7 +89,7 @@
 
       <article class="drink-card featured" onclick="openProduct(this)">
         <div class="card-ribbon">Dublin Special</div>
-        <div class="card-icon">🍺</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_bar</span></div>
         <div class="card-content">
           <h3 class="card-name">Dublin Glass Beer</h3>
           <p class="card-desc">Cerveza rubia · Sirope artesanal de lulo/hierbabuena · Zumo de limón</p>
@@ -104,7 +101,7 @@
 
       <article class="drink-card featured" onclick="openProduct(this)">
         <div class="card-ribbon">De la Casa</div>
-        <div class="card-icon">🌿</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_bar</span></div>
         <div class="card-content">
           <h3 class="card-name">Jägerhouse</h3>
           <p class="card-desc">Jägermeister · Lulo · Romero · Zumo de limón</p>
@@ -116,9 +113,9 @@
 
       <article class="drink-card featured" onclick="openProduct(this)">
         <div class="card-ribbon">De la Casa</div>
-        <div class="card-icon">🍊</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_bar</span></div>
         <div class="card-content">
-          <h3 class="card-name">Covid-19</h3>
+          <div class="card-icon-wrap"><span class="material-symbols-outlined">science</span></div><div class="card-content"><h3 class="card-name">Covid-19</h3>
           <p class="card-desc">Jägermeister · Vodka · Maracuyá · Romero · Zumo de limón</p>
         </div>
         <div class="card-price-tag">
@@ -133,10 +130,16 @@
     </div>
 
     <div class="cards-grid">
+      <article class="drink-card animate-on-scroll" onclick="openProduct(this)">
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">emoji_food_beverage</span></div><div class="card-content"><h3 class="card-name">Moscow Mule</h3>
+          <p class="card-desc">Vodka · Sirope de jengibre · Limón · Ginger canadadry</p>
+        </div>
+        <div class="card-price-tag">
+          <span class="currency">$</span><span class="amount">28.000</span>
+        </div>
+      </article>
       <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🥤</div>
-        <div class="card-content">
-          <h3 class="card-name">Dr. Pepper</h3>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_fire_department</span></div><div class="card-content"><h3 class="card-name">Dr. Pepper</h3>
           <p class="card-desc">Cerveza rubia · Vodka · Licor de café · Shot de brandy flameado · Coca Cola</p>
         </div>
         <div class="card-price-tag">
@@ -145,7 +148,7 @@
       </article>
 
       <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">💣</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_bar</span></div>
         <div class="card-content">
           <h3 class="card-name">Jägerbomb</h3>
           <p class="card-desc">Jägermeister · Bebida energizante</p>
@@ -156,7 +159,7 @@
       </article>
 
       <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🥂</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_bar</span></div>
         <div class="card-content">
           <h3 class="card-name">Orgasmo</h3>
           <p class="card-desc">Crema de whiskey · Vodka · Licor de café · Amaretto</p>
@@ -167,7 +170,7 @@
       </article>
 
       <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🥃</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_bar</span></div>
         <div class="card-content">
           <h3 class="card-name">Padrino</h3>
           <p class="card-desc">Whiskey · Amareto</p>
@@ -178,9 +181,7 @@
       </article>
 
       <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🫧</div>
-        <div class="card-content">
-          <h3 class="card-name">Gin Tonic</h3>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">bubble_chart</span></div><div class="card-content"><h3 class="card-name">Gin Tonic</h3>
           <p class="card-desc">Ginebra Gordons · Tónica · Limón o naranja fresca (a elección)</p>
         </div>
         <div class="card-price-tag">
@@ -189,7 +190,7 @@
       </article>
 
       <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🫒</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_bar</span></div>
         <div class="card-content">
           <h3 class="card-name">Dry Martini</h3>
           <p class="card-desc">Ginebra · Vermouth seco · Aceituna</p>
@@ -200,7 +201,7 @@
       </article>
 
       <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🍋</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_bar</span></div>
         <div class="card-content">
           <h3 class="card-name">Long Island</h3>
           <p class="card-desc">Ginebra · Vodka · Ron blanco · Triple sec · Zumo de limón · Coca Cola</p>
@@ -211,7 +212,7 @@
       </article>
 
       <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🌸</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_bar</span></div>
         <div class="card-content">
           <h3 class="card-name">Cosmopolitan</h3>
           <p class="card-desc">Ginebra · Vodka · Triple sec · Granadina · Zumo de limón</p>
@@ -222,9 +223,7 @@
       </article>
 
       <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🌿</div>
-        <div class="card-content">
-          <h3 class="card-name">Mojito Cubano</h3>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">eco</span></div><div class="card-content"><h3 class="card-name">Mojito Cubano</h3>
           <p class="card-desc">Ron blanco · Hierbabuena · Azúcar y limón macerados · Soda</p>
         </div>
         <div class="card-price-tag">
@@ -233,9 +232,7 @@
       </article>
 
       <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🍋</div>
-        <div class="card-content">
-          <h3 class="card-name">Caipirinha</h3>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">spa</span></div><div class="card-content"><h3 class="card-name">Caipirinha</h3>
           <p class="card-desc">Ron blanco · Limón y azúcar macerados</p>
         </div>
         <div class="card-price-tag">
@@ -244,7 +241,7 @@
       </article>
 
       <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🍹</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_bar</span></div>
         <div class="card-content">
           <h3 class="card-name">Margarita Tradicional</h3>
           <p class="card-desc">Tequila · Triple sec · Zumo de limón</p>
@@ -255,9 +252,7 @@
       </article>
 
       <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🏖️</div>
-        <div class="card-content">
-          <h3 class="card-name">Sex on the Beach</h3>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">surfing</span></div><div class="card-content"><h3 class="card-name">Sex on the Beach</h3>
           <p class="card-desc">Vodka · Licor de durazno · Granadina · Zumo de naranja</p>
         </div>
         <div class="card-price-tag">
@@ -276,11 +271,9 @@
     </div>
 
     <div class="cards-grid">
-      <article class="drink-card featured" onclick="openProduct(this)">
+      <article class="drink-card featured animate-on-scroll" onclick="openProduct(this)">
         <div class="card-ribbon">Artesanal</div>
-        <div class="card-icon">🫧</div>
-        <div class="card-content">
-          <h3 class="card-name">Sodas Italianas</h3>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">blender</span></div><div class="card-content"><h3 class="card-name">Sodas Italianas</h3>
           <p class="card-desc">Soda · Sirope artesanal de tu elección · Zumo de limón</p>
           <div class="card-flavors">
             <span>Maracuyá</span><span>Lulo</span><span>Frutos Rojos</span><span>Borojó</span><span>Jengibre</span>
@@ -291,8 +284,28 @@
         </div>
       </article>
 
+      <article class="drink-card animate-on-scroll" onclick="openProduct(this)">
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">water_drop</span></div><div class="card-content"><h3 class="card-name">Agua Manantial</h3>
+          <p class="card-desc">Botella de agua natural</p>
+        </div>
+        <div class="card-price-tag">
+          <span class="currency">$</span><span class="amount">6.000</span>
+        </div>
+      </article>
+
+      <article class="drink-card animate-on-scroll" onclick="openProduct(this)">
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_bar</span></div>
+        <div class="card-content">
+          <h3 class="card-name">Coca-Cola, Ginger, Tónica y Soda</h3>
+          <p class="card-desc">Gaseosas tradicionales</p>
+        </div>
+        <div class="card-price-tag">
+          <span class="currency">$</span><span class="amount">7.000</span>
+        </div>
+      </article>
+
       <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🌹</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_bar</span></div>
         <div class="card-content">
           <h3 class="card-name">Simply Red</h3>
           <p class="card-desc">Granadina · Limón · Ginger ale</p>
@@ -303,7 +316,7 @@
       </article>
 
       <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🌅</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_bar</span></div>
         <div class="card-content">
           <h3 class="card-name">Sunrise</h3>
           <p class="card-desc">Zumo de naranja · Granadina</p>
@@ -314,7 +327,7 @@
       </article>
 
       <article class="drink-card" onclick="openProduct(this)">
-        <div class="card-icon">🍃</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_bar</span></div>
         <div class="card-content">
           <h3 class="card-name">Limonada Hierbabuena</h3>
           <p class="card-desc">Soda · Hierbabuena · Zumo de limón</p>
@@ -335,17 +348,22 @@
     </div>
 
     <div class="beer-table">
-      <div class="beer-row"><span class="beer-name">Stella Artois</span><span class="beer-dots"></span><span class="beer-price">$10.000</span></div>
-      <div class="beer-row"><span class="beer-name">Corona</span><span class="beer-dots"></span><span class="beer-price">$10.000</span></div>
-      <div class="beer-row"><span class="beer-name">Budweiser <em>(lata 250ml)</em></span><span class="beer-dots"></span><span class="beer-price">$7.000</span></div>
-      <div class="beer-row"><span class="beer-name">Club Colombia Dorada</span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
-      <div class="beer-row"><span class="beer-name">Club Colombia Roja</span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
-      <div class="beer-row"><span class="beer-name">Club Colombia Trigo</span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
-      <div class="beer-row"><span class="beer-name">Águila Original</span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
-      <div class="beer-row"><span class="beer-name">Águila Light</span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
-      <div class="beer-row"><span class="beer-name">Poker</span><span class="beer-dots"></span><span class="beer-price">$7.000</span></div>
-      <div class="beer-row"><span class="beer-name">Draft <em>(barril 500ml)</em></span><span class="beer-dots"></span><span class="beer-price">$18.000</span></div>
-      <div class="beer-row"><span class="beer-name">Smirnoff Ice</span><span class="beer-dots"></span><span class="beer-price">$12.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Silvana <em>(Artesanal)</em></span><span class="beer-dots"></span><span class="beer-price">$13.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Camelia <em>(Artesanal)</em></span><span class="beer-dots"></span><span class="beer-price">$13.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Draft Season <em>(Artesanal de barril)</em></span><span class="beer-dots"></span><span class="beer-price">$18.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Stella Artois</span><span class="beer-dots"></span><span class="beer-price">$12.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Heineken</span><span class="beer-dots"></span><span class="beer-price">$10.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Corona</span><span class="beer-dots"></span><span class="beer-price">$10.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Budweiser <em>(lata 250)</em></span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Club Colombia Dorada</span><span class="beer-dots"></span><span class="beer-price">$9.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Club Colombia Roja</span><span class="beer-dots"></span><span class="beer-price">$9.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Club Colombia Trigo</span><span class="beer-dots"></span><span class="beer-price">$9.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Águila Original</span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Águila Light</span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Águila Cero</span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Poker</span><span class="beer-dots"></span><span class="beer-price">$8.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Tecate</span><span class="beer-dots"></span><span class="beer-price">$6.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Smirnoff</span><span class="beer-dots"></span><span class="beer-price">$12.000</span></div>
     </div>
 
     <div class="promo-grid">
@@ -380,16 +398,17 @@
         <span class="col-label">Botella</span>
         <span class="col-label">Caneca</span>
       </div>
-      <div class="licor-row"><span class="licor-name">Aguard. Blanco del Valle</span><span class="licor-price">$85.000</span><span class="licor-price">$45.000</span></div>
-      <div class="licor-row"><span class="licor-name">Ron Viejo de Caldas</span><span class="licor-price">$100.000</span><span class="licor-price">$55.000</span></div>
-      <div class="licor-row"><span class="licor-name">Ron Caldas 8 Años</span><span class="licor-price">$170.000</span><span class="licor-price">$110.000</span></div>
-      <div class="licor-row"><span class="licor-name">Vodka Absolut</span><span class="licor-price">$180.000</span><span class="licor-price">$100.000</span></div>
-      <div class="licor-row"><span class="licor-name">Tequila Jose C. Olmeca</span><span class="licor-price">$170.000</span><span class="licor-price">$95.000</span></div>
-      <div class="licor-row"><span class="licor-name">Tequila Jimador</span><span class="licor-price">$200.000</span><span class="licor-price">$110.000</span></div>
-      <div class="licor-row"><span class="licor-name">Jägermeister</span><span class="licor-price">$180.000</span><span class="licor-price">$100.000</span></div>
-      <div class="licor-row"><span class="licor-name">Jack Daniel's</span><span class="licor-price">$220.000</span><span class="licor-price">$110.000</span></div>
-      <div class="licor-row"><span class="licor-name">Jameson</span><span class="licor-price">$200.000</span><span class="licor-price">$100.000</span></div>
-      <div class="licor-row no-caneca"><span class="licor-name">Ginebra Gordons</span><span class="licor-price">$140.000</span><span class="licor-price dim">—</span></div>
+      <div class="licor-row animate-on-scroll"><span class="licor-name">Aguard. Amarillo</span><span class="licor-price">$100.000</span><span class="licor-price">$60.000</span></div>
+      <div class="licor-row animate-on-scroll"><span class="licor-name">Aguard. Blanco del Valle</span><span class="licor-price">$85.000</span><span class="licor-price">$45.000</span></div>
+      <div class="licor-row animate-on-scroll"><span class="licor-name">Ron Viejo de Caldas</span><span class="licor-price">$100.000</span><span class="licor-price">$55.000</span></div>
+      <div class="licor-row animate-on-scroll"><span class="licor-name">Ron Caldas 8 Años</span><span class="licor-price">$170.000</span><span class="licor-price">$110.000</span></div>
+      <div class="licor-row animate-on-scroll"><span class="licor-name">Vodka Absolut</span><span class="licor-price">$180.000</span><span class="licor-price">$100.000</span></div>
+      <div class="licor-row animate-on-scroll"><span class="licor-name">Tequila Jose C. Olmeca</span><span class="licor-price">$170.000</span><span class="licor-price">$95.000</span></div>
+      <div class="licor-row animate-on-scroll"><span class="licor-name">Tequila Jimador</span><span class="licor-price">$200.000</span><span class="licor-price">$110.000</span></div>
+      <div class="licor-row animate-on-scroll"><span class="licor-name">Jägermeister</span><span class="licor-price">$180.000</span><span class="licor-price">$100.000</span></div>
+      <div class="licor-row animate-on-scroll"><span class="licor-name">Jack Daniel's</span><span class="licor-price">$220.000</span><span class="licor-price">$110.000</span></div>
+      <div class="licor-row animate-on-scroll"><span class="licor-name">Jameson</span><span class="licor-price">$200.000</span><span class="licor-price">$100.000</span></div>
+      <div class="licor-row no-caneca animate-on-scroll"><span class="licor-name">Ginebra Gordons</span><span class="licor-price">$140.000</span><span class="licor-price dim">—</span></div>
     </div>
 
     <div class="reserva-callout">
@@ -416,31 +435,45 @@
     </div>
 
     <div class="food-grid">
-      <article class="food-card" onclick="openProduct(this)">
-        <div class="food-emoji">🍔</div>
+      <article class="food-card animate-on-scroll premium" onclick="openProduct(this)">
+        <div class="food-badge">Premium</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">lunch_dining</span></div>
         <div class="food-info">
-          <h3 class="food-name">Cheese Burger</h3>
-          <p class="food-desc">Pan artesanal · Carne de res · Queso cheddar · Lechuga · Tomate · Cebolla · Salsa de la casa · Papas a la francesa</p>
+          <h3 class="food-name">SP Autor (Big Bang)</h3>
+          <p class="food-desc">Pan artesanal · 160g carne de res seleccionada · Queso mozzarella apanado en doritos · Mermelada de lulo con tocineta en reducción de tequila · Salsa ahumada de la casa · Cebolla caramelizada · Lechuga y tomates frescos · Salsa de la casa acompañado de papas rústicas</p>
+          <div class="food-price">$38.900</div>
+        </div>
+      </article>
+
+      <article class="food-card animate-on-scroll" onclick="openProduct(this)">
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">lunch_dining</span></div>
+        <div class="food-info">
+          <h3 class="food-name">Cheeseburguer</h3>
+          <p class="food-desc">Pan artesanal · 160g carne seleccionada · Cebolla caramelizada · Chimichurri · Lechuga · Tomate · Cebolla crispy · Salsa de la casa bañada en queso mozzarella fundido</p>
           <div class="food-price">$34.000</div>
         </div>
       </article>
 
-      <article class="food-card" onclick="openProduct(this)">
-        <div class="food-emoji">🍔</div>
+      <article class="food-card animate-on-scroll" onclick="openProduct(this)">
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">lunch_dining</span></div>
         <div class="food-info">
-          <h3 class="food-name">Hamburguesa SP Original</h3>
-          <p class="food-desc">Pan artesanal · 160g carne Angus · Salsa chipotle · Chimichurri · Cebolla caramelizada · Aderezo de piña · Tocineta · Verduras · Jamón · Queso cheddar</p>
+          <h3 class="food-name">SP Original</h3>
+          <p class="food-desc">Pan artesanal · 160g carne seleccionada · Cebolla caramelizada · Chimichurri · Reducción de piña con canela y tequila · Jamón ahumado · Queso cheddar acompañada de papas rústicas</p>
           <div class="food-price">$29.900</div>
         </div>
       </article>
+    </div>
 
-      <article class="food-card premium" onclick="openProduct(this)">
-        <div class="food-badge">Premium</div>
-        <div class="food-emoji">🍔</div>
-        <div class="food-info">
-          <h3 class="food-name">Hamburguesa SP de Autor</h3>
-          <p class="food-desc">Pan artesanal · 160g carne Angus 100% certificada · Queso mozarella apanado en Doritos · Mermelada de lulo con tocineta en reducción con tequila · Salsa ahumada de la casa · Cebolla caramelizada · Lechuga y tomates frescos · Acompañada con papas a la francesa</p>
-          <div class="food-price">$38.900</div>
+    <!-- Cheese Fingers -->
+    <div class="subsection-label">
+      <span class="sub-diamond">◆</span> Para Compartir <span class="sub-diamond">◆</span>
+    </div>
+
+    <div class="food-grid">
+      <article class="food-card animate-on-scroll" onclick="openProduct(this)">
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">tapas</span></div><div class="food-info"><h3 class="food-name">Cheese Fingers</h3>
+          <p class="food-desc">4 deditos de queso mozzarella apanados con doritos, acompañado de salsa oriental</p>
+          <div class="food-price">$21.000</div>
         </div>
       </article>
     </div>
@@ -451,11 +484,11 @@
     </div>
 
     <div class="food-grid">
-      <article class="food-card" onclick="openProduct(this)">
-        <div class="food-emoji">🧀</div>
-        <div class="food-info">
-          <h3 class="food-name">Nachos</h3>
-          <p class="food-desc">Totopos de maíz · Carne desmechada en su salsa · Maíz tierno · Queso mozarella gratinados · Guacamole · Pico de gallo · Frijol refrito · Salsa chipotle</p>
+      <article class="food-card animate-on-scroll" onclick="openProduct(this)">
+        <div class="card-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold);"><path d="M12 2L2 20h20L12 2z"/><circle cx="12" cy="14" r="2" fill="currentColor"/></svg>
+        </div><div class="food-info"><h3 class="food-name">Nachos SP</h3>
+          <p class="food-desc">Totopos de maiz crocante · Queso gratinado · Chile con carne pico de gallo · Guacamole · Salsa chipotle</p>
           <div class="food-price">$28.000</div>
         </div>
       </article>
@@ -467,11 +500,9 @@
     </div>
 
     <div class="food-grid">
-      <article class="food-card" onclick="openProduct(this)">
-        <div class="food-emoji">🥪</div>
-        <div class="food-info">
-          <h3 class="food-name">Sándwich Pernil Ahumado</h3>
-          <p class="food-desc">Pan baguette · Láminas de pierna de cerdo ahumada al barril · Cebolla caramelizada · Mojo cubano · Salsa de la casa · Queso mozarella · Verduras</p>
+      <article class="food-card animate-on-scroll" onclick="openProduct(this)">
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">breakfast_dining</span></div><div class="food-info"><h3 class="food-name">Sandwich SP</h3>
+          <p class="food-desc">Pan baguette · Laminas de pierna de cerdo al barril · Cebolla caramelizada · Mojo cubano · Salsa de la casa · Queso cheddar · Lechuga · Tomates</p>
           <div class="food-price">$31.000</div>
         </div>
       </article>
@@ -483,11 +514,9 @@
     </div>
 
     <div class="food-grid">
-      <article class="food-card" onclick="openProduct(this)">
-        <div class="food-emoji">🍟</div>
-        <div class="food-info">
-          <h3 class="food-name">Papas SP</h3>
-          <p class="food-desc">Papas a la francesa con salsas especiales de la casa</p>
+      <article class="food-card animate-on-scroll" onclick="openProduct(this)">
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">fastfood</span></div><div class="food-info"><h3 class="food-name">Papas Super SP</h3>
+          <p class="food-desc">Papas a la francesa artesanales gratinadas · Tocineta bondiola de cerdo al barril · Cebolla caramelizada · 150g de carne angus bañadas en nuestra salsa de la casa</p>
           <div class="food-price">$30.000</div>
         </div>
       </article>
@@ -497,24 +526,30 @@
 
 </main>
 
-<!-- ░░░ FOOTER ░░░ -->
+<!-- ─── FOOTER PREMIUM ─── -->
 <footer class="site-footer">
-  <div class="footer-shamrock">☘</div>
-  <div class="footer-brand">DUBLIN IRISH PUB</div>
-  <div class="footer-est">SINCE 2014</div>
-  <div class="footer-rule"></div>
-  <div class="footer-address">Calle 5 # 23-58 · Esquina B/Miraflores · Cali</div>
-  <div class="footer-links">
-    <a href="https://www.instagram.com/dublinbarcali/" target="_blank" class="footer-link">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      @dublinbarcali
-    </a>
-    <a href="https://wa.me/573015307754" target="_blank" class="footer-link wa-link">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-      Reservas
-    </a>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h2 class="footer-logo">DUBLIN</h2>
+      <div class="footer-sub">IRISH PUB</div>
+    </div>
+    <div class="footer-divider">
+      <div class="diamond"></div>
+    </div>
+    <div class="footer-info">
+      <p><span class="material-symbols-outlined">location_on</span> Calle 5 # 23-58 • Esquina B/Miraflores • Cali</p>
+      <p><span class="material-symbols-outlined">history</span> SINCE 2014</p>
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/dublinbarcali/" target="_blank" class="social-btn" title="Instagram">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://wa.me/573015307754" target="_blank" class="social-btn" title="WhatsApp">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      </a>
+    </div>
   </div>
-  <div class="footer-copy">© 2026 Dublin Irish Pub · Cali, Colombia</div>
+  <div class="footer-copy">© 2026 Dublin Irish Pub • Todos los derechos reservados</div>
 </footer>
 
 <!-- FAB WhatsApp -->
@@ -522,25 +557,19 @@
   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
 </a>
 
-<!-- ░░░ PRODUCT MODAL ░░░ -->
+<!-- ─── PRODUCT MODAL (CENTERED) ─── -->
 <div class="modal-overlay" id="productOverlay" onclick="closeProduct(event)">
-  <div class="product-sheet" id="productModal">
-    <div class="sheet-handle"></div>
-    <button class="sheet-close" onclick="closeProductDirect()">✕</button>
+  <div class="product-sheet" id="productModal" onclick="event.stopPropagation()">
+    <button class="sheet-close" onclick="closeProductDirect()"><span class="material-symbols-outlined">close</span></button>
     <div class="sheet-icon" id="pmIcon"></div>
-    <div class="sheet-body">
-      <div class="sheet-badge" id="pmBadge"></div>
-      <h2 class="sheet-name" id="pmName"></h2>
-      <p class="sheet-desc" id="pmDesc"></p>
-      <div class="sheet-flavors" id="pmFlavors"></div>
-      <div class="sheet-footer">
-        <div class="sheet-price" id="pmPrice"></div>
-        <button class="sheet-wa-btn" id="pmWaBtn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-          Pedir / Reservar
-        </button>
-      </div>
-    </div>
+    <div class="sheet-badge" id="pmBadge"></div>
+    <h2 class="sheet-name" id="pmName"></h2>
+    <p class="sheet-desc" id="pmDesc"></p>
+    <div class="sheet-price" id="pmPrice"></div>
+    <button class="sheet-wa-btn" id="pmWaBtn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      Pedir / Reservar
+    </button>
   </div>
 </div>
 
@@ -573,3 +602,6 @@
 <script src="dublin.js"></script>
 </body>
 </html>
+
+
+
