@@ -3,10 +3,11 @@
 ════════════════════════════════════════════════════ */
 
 :root {
-  /* Paleta Base (Dark Slate / Teal de la carta PDF) */
-  --bg-base: #0a1317;
-  --bg-card: rgba(255, 255, 255, 0.02);
-  --bg-card-hover: rgba(255, 255, 255, 0.04);
+  /* Paleta Base (Dark Forest Green / Grunge) */
+  --bg-base: #061109;
+  --bg-glow: #11361c;
+  --bg-card: rgba(0, 0, 0, 0.45);
+  --bg-card-hover: rgba(0, 0, 0, 0.65);
   
   /* Dorado Premium */
   --gold: #D4AF37;
@@ -44,7 +45,8 @@ html {
 }
 
 body {
-  background-color: var(--bg-base);
+  background: radial-gradient(circle at 50% 20%, var(--bg-glow) 0%, var(--bg-base) 100%);
+  background-attachment: fixed;
   color: var(--text-primary);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
@@ -53,11 +55,13 @@ body {
   overflow-x: hidden;
 }
 
-/* ─── RUIDO DE FONDO (Noise Texture) ─── */
+/* ─── TEXTURA PAPEL TAPIZ (Mesh / Diamond Wallpaper) ─── */
 .grain {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  pointer-events: none; z-index: -1; opacity: 0.15;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: -1; opacity: 0.12;
+  background-image: url("damask_bg.png");
+  background-size: cover;
+  background-position: center;
 }
 
 /* ════════════════════════════════════════════════════
@@ -257,6 +261,8 @@ body {
 .drink-card, .food-card {
   position: relative;
   background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 24px;
@@ -381,7 +387,7 @@ body {
 .modal-overlay.active { opacity: 1; pointer-events: auto; }
 
 .product-sheet {
-  background: var(--bg-base);
+  background: radial-gradient(circle at 50% 0%, var(--bg-glow) 0%, var(--bg-base) 100%);
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-lg);
   width: 90%; max-width: 420px;
@@ -397,8 +403,10 @@ body {
 .product-sheet::before {
   content: "";
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  pointer-events: none; z-index: 0; opacity: 0.15;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.12;
+  background-image: url("damask_bg.png");
+  background-size: cover;
+  background-position: center;
 }
 .product-sheet > * {
   position: relative; z-index: 1;
@@ -434,7 +442,7 @@ body {
    FOOTER PREMIUM
 ════════════════════════════════════════════════════ */
 .site-footer {
-  background: linear-gradient(to top, #050a0c, var(--bg-base));
+  background: linear-gradient(to top, #030805, var(--bg-base));
   border-top: 1px solid var(--border-subtle);
   padding: 60px 20px 40px;
   position: relative;
