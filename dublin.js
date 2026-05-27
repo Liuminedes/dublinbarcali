@@ -136,3 +136,33 @@ document.getElementById('pmWaBtn')?.addEventListener('click', () => {
   const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
   window.open(url, '_blank');
 });
+/* Drag to scroll para el menu de navegacion */
+const slider = document.querySelector('.nav-inner');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+if(slider) {
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.style.cursor = 'grabbing';
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.style.cursor = 'grab';
+  });
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.style.cursor = 'grab';
+  });
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2; // velocidad de scroll
+    slider.scrollLeft = scrollLeft - walk;
+  });
+  slider.style.cursor = 'grab';
+}
