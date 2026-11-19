@@ -52,8 +52,8 @@
     <button class="tab" data-section="licores">
       <span class="material-symbols-outlined">liquor</span><span class="tab-label">Licores</span>
     </button>
-    <button class="tab" data-section="comida">
-      <span class="material-symbols-outlined">lunch_dining</span><span class="tab-label">Comida</span>
+    <button class="tab" data-section="para-picar">
+      <span class="material-symbols-outlined">tapas</span><span class="tab-label">Para Picar</span>
     </button>
   </div>
 </nav>
@@ -350,6 +350,7 @@
     <div class="beer-table">
       <div class="beer-row animate-on-scroll"><span class="beer-name">Silvana <em>(Artesanal)</em></span><span class="beer-dots"></span><span class="beer-price">$13.000</span></div>
       <div class="beer-row animate-on-scroll"><span class="beer-name">Camelia <em>(Artesanal)</em></span><span class="beer-dots"></span><span class="beer-price">$13.000</span></div>
+      <div class="beer-row animate-on-scroll"><span class="beer-name">Tres Cordilleras Negra <em>(Artesanal)</em></span><span class="beer-dots"></span><span class="beer-price">$13.000</span></div>
       <div class="beer-row animate-on-scroll"><span class="beer-name">Draft Season <em>(Artesanal de barril)</em></span><span class="beer-dots"></span><span class="beer-price">$18.000</span></div>
       <div class="beer-row animate-on-scroll"><span class="beer-name">Stella Artois</span><span class="beer-dots"></span><span class="beer-price">$12.000</span></div>
       <div class="beer-row animate-on-scroll"><span class="beer-name">Heineken</span><span class="beer-dots"></span><span class="beer-price">$10.000</span></div>
@@ -403,7 +404,6 @@
       <div class="licor-row animate-on-scroll"><span class="licor-name">Ron Viejo de Caldas</span><span class="licor-price">$100.000</span><span class="licor-price">$55.000</span></div>
       <div class="licor-row animate-on-scroll"><span class="licor-name">Ron Caldas 8 Años</span><span class="licor-price">$170.000</span><span class="licor-price">$110.000</span></div>
       <div class="licor-row animate-on-scroll"><span class="licor-name">Vodka Absolut</span><span class="licor-price">$180.000</span><span class="licor-price">$100.000</span></div>
-      <div class="licor-row animate-on-scroll"><span class="licor-name">Tequila Jose C. Olmeca</span><span class="licor-price">$170.000</span><span class="licor-price">$95.000</span></div>
       <div class="licor-row animate-on-scroll"><span class="licor-name">Tequila Jimador</span><span class="licor-price">$200.000</span><span class="licor-price">$110.000</span></div>
       <div class="licor-row animate-on-scroll"><span class="licor-name">Jägermeister</span><span class="licor-price">$180.000</span><span class="licor-price">$100.000</span></div>
       <div class="licor-row animate-on-scroll"><span class="licor-name">Jack Daniel's</span><span class="licor-price">$220.000</span><span class="licor-price">$110.000</span></div>
@@ -421,107 +421,46 @@
     </div>
   </section>
 
-  <!-- ── COMIDA ── -->
-  <section class="menu-section hidden" id="comida">
+  <!-- ── PARA PICAR ── -->
+  <section class="menu-section hidden" id="para-picar">
     <div class="section-header">
       <div class="section-line"></div>
-      <h2 class="section-title">Comida</h2>
+      <h2 class="section-title">Para Picar</h2>
       <div class="section-line"></div>
     </div>
 
-    <!-- Hamburguesas -->
     <div class="subsection-label">
-      <span class="sub-diamond">◆</span> Hamburguesas <span class="sub-diamond">◆</span>
+      <span class="sub-diamond">◆</span> Para Picar <span class="sub-diamond">◆</span>
     </div>
 
     <div class="food-grid">
-      <article class="food-card animate-on-scroll premium" onclick="openProduct(this)">
-        <div class="food-badge">Premium</div>
-        <div class="card-icon-wrap"><span class="material-symbols-outlined">lunch_dining</span></div>
-        <div class="food-info">
-          <h3 class="food-name">SP Autor (Big Bang)</h3>
-          <p class="food-desc">Pan artesanal · 160g carne de res seleccionada · Queso mozzarella apanado en doritos · Mermelada de lulo con tocineta en reducción de tequila · Salsa ahumada de la casa · Cebolla caramelizada · Lechuga y tomates frescos · Salsa de la casa acompañado de papas rústicas</p>
-          <div class="food-price">$38.900</div>
-        </div>
-      </article>
-
       <article class="food-card animate-on-scroll" onclick="openProduct(this)">
-        <div class="card-icon-wrap"><span class="material-symbols-outlined">lunch_dining</span></div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">tapas</span></div>
         <div class="food-info">
-          <h3 class="food-name">Cheeseburguer</h3>
-          <p class="food-desc">Pan artesanal · 160g carne seleccionada · Cebolla caramelizada · Chimichurri · Lechuga · Tomate · Cebolla crispy · Salsa de la casa bañada en queso mozzarella fundido</p>
-          <div class="food-price">$34.000</div>
+          <h3 class="food-name">Snacks</h3>
+          <p class="food-desc">Ideales para picar y acompañar tus bebidas</p>
+          <div class="food-price">$11.000</div>
         </div>
       </article>
 
       <article class="food-card animate-on-scroll" onclick="openProduct(this)">
         <div class="card-icon-wrap"><span class="material-symbols-outlined">lunch_dining</span></div>
         <div class="food-info">
-          <h3 class="food-name">SP Original</h3>
-          <p class="food-desc">Pan artesanal · 160g carne seleccionada · Cebolla caramelizada · Chimichurri · Reducción de piña con canela y tequila · Jamón ahumado · Queso cheddar acompañada de papas rústicas</p>
-          <div class="food-price">$29.900</div>
+          <h3 class="food-name">Hot Dog</h3>
+          <p class="food-desc">Perro caliente clásico con salsas de la casa</p>
+          <div class="food-price">$10.000</div>
         </div>
       </article>
-    </div>
 
-    <!-- Cheese Fingers -->
-    <div class="subsection-label">
-      <span class="sub-diamond">◆</span> Para Compartir <span class="sub-diamond">◆</span>
-    </div>
-
-    <div class="food-grid">
       <article class="food-card animate-on-scroll" onclick="openProduct(this)">
-        <div class="card-icon-wrap"><span class="material-symbols-outlined">tapas</span></div><div class="food-info"><h3 class="food-name">Cheese Fingers</h3>
-          <p class="food-desc">4 deditos de queso mozzarella apanados con doritos, acompañado de salsa oriental</p>
-          <div class="food-price">$21.000</div>
+        <div class="card-icon-wrap"><span class="material-symbols-outlined">local_fire_department</span></div>
+        <div class="food-info">
+          <h3 class="food-name">Adición de Jalapeño</h3>
+          <p class="food-desc">Porción extra de jalapeños</p>
+          <div class="food-price">$2.000</div>
         </div>
       </article>
     </div>
-
-    <!-- Nachos -->
-    <div class="subsection-label">
-      <span class="sub-diamond">◆</span> Nachos <span class="sub-diamond">◆</span>
-    </div>
-
-    <div class="food-grid">
-      <article class="food-card animate-on-scroll" onclick="openProduct(this)">
-        <div class="card-icon-wrap">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold);"><path d="M12 2L2 20h20L12 2z"/><circle cx="12" cy="14" r="2" fill="currentColor"/></svg>
-        </div><div class="food-info"><h3 class="food-name">Nachos SP</h3>
-          <p class="food-desc">Totopos de maiz crocante · Queso gratinado · Chile con carne pico de gallo · Guacamole · Salsa chipotle</p>
-          <div class="food-price">$28.000</div>
-        </div>
-      </article>
-    </div>
-
-    <!-- Sandwiches -->
-    <div class="subsection-label">
-      <span class="sub-diamond">◆</span> Sandwiches <span class="sub-diamond">◆</span>
-    </div>
-
-    <div class="food-grid">
-      <article class="food-card animate-on-scroll" onclick="openProduct(this)">
-        <div class="card-icon-wrap"><span class="material-symbols-outlined">breakfast_dining</span></div><div class="food-info"><h3 class="food-name">Sandwich SP</h3>
-          <p class="food-desc">Pan baguette · Laminas de pierna de cerdo al barril · Cebolla caramelizada · Mojo cubano · Salsa de la casa · Queso cheddar · Lechuga · Tomates</p>
-          <div class="food-price">$31.000</div>
-        </div>
-      </article>
-    </div>
-
-    <!-- Acompañamientos -->
-    <div class="subsection-label">
-      <span class="sub-diamond">◆</span> Acompañamientos <span class="sub-diamond">◆</span>
-    </div>
-
-    <div class="food-grid">
-      <article class="food-card animate-on-scroll" onclick="openProduct(this)">
-        <div class="card-icon-wrap"><span class="material-symbols-outlined">fastfood</span></div><div class="food-info"><h3 class="food-name">Papas Super SP</h3>
-          <p class="food-desc">Papas a la francesa artesanales gratinadas · Tocineta bondiola de cerdo al barril · Cebolla caramelizada · 150g de carne angus bañadas en nuestra salsa de la casa</p>
-          <div class="food-price">$30.000</div>
-        </div>
-      </article>
-    </div>
-
   </section>
 
 </main>
